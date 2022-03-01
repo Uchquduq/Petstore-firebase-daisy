@@ -3,7 +3,6 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
-require('./assets/app.css')
 import { store } from './store/store';
 import firebase from 'firebase';
 import './firebase';
