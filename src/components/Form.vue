@@ -1,65 +1,76 @@
 <template>
   <div>
     <my-header :cartItemCount="cartItemCount"></my-header>
-    <div class="row">
-      <div class="col-md-10 col-md-offset-1">
-        <div class="panel panel-info">
-          <div class="panel-heading">Pet Depot Checkout</div>
-          <div class="panel-body">
-            <div class="form-group">
-              <div class="col-md-12">
-                <h4><strong>Enter Your Information</strong></h4>
-              </div>
+    <div class="container mx-auto px-4">
+      <p class="text-2xl font-bold">Pet Depot Checkout</p>
+      <div class="flex flex-row flex-wrap">
+        <div class="basis-3/4">
+          <div class="form-group mt-2 mb-2">
+            <div class="">
+              <p class="text-xl font-bold">Enter Your Information</p>
             </div>
-            <div class="form-group">
-              <div class="col-md-6">
-                <strong>First Name:</strong>
-                <input v-model.trim="order.firstName" class="form-control" />
-              </div>
-              <div class="col-md-6">
-                <strong>Last Name:</strong>
-                <input v-model.trim="order.lastName" class="form-control" />
-              </div>
-            </div>
-            <div class="form-group">
-              <div class="col-md-12"><strong>Address:</strong></div>
-              <div class="col-md-12">
-                <input v-model.trim="order.address" class="form-control" />
-              </div>
-            </div>
-            <div class="form-group">
-              <div class="col-md-12"><strong>City:</strong></div>
-              <div class="col-md-12">
-                <input v-model.trim="order.city" class="form-control" />
-              </div>
-            </div>
-            <div class="form-group">
-              <div class="col-md-2">
-                <strong>State:</strong>
-                <select v-model="order.state" class="form-control">
-                  <option disabled value="">State</option>
-                  <option
-                    v-for="(state, key) in states"
-                    v-bind:value="state"
-                    :key="key"
-                  >
-                    {{ key }}
-                  </option>
-                </select>
-              </div>
-            </div>
-            <div class="form-group">
-              <div class="col-md-6 col-md-offset-4">
-                <strong>Zip / Postal Code:</strong>
-                <input
-                  v-model.number="order.zip"
-                  class="form-control"
-                  type="number"
-                />
-              </div>
-            </div>
-            <div class="form-group">
-              <div class="col-md-6 boxes">
+          </div>
+          <div class="form-group">
+            <div class="form-control w-full max-w-xs">
+              <label class="label">
+                <span class="label-text">First name</span>
+              </label>
+              <input
+                type="text"
+                placeholder="Type here"
+                class="input input-bordered w-full max-w-xs"
+                v-model.trim="order.firstName"
+              />
+              <label class="label">
+                <span class="label-text">Last name</span>
+              </label>
+              <input
+                type="text"
+                placeholder="Type here"
+                class="input input-bordered w-full max-w-xs"
+                v-model.trim="order.lastName"
+              />
+              <label class="label">
+                <span class="label-text">Address</span>
+              </label>
+              <input
+                type="text"
+                placeholder="Type here"
+                class="input input-bordered w-full max-w-xs"
+                v-model.trim="order.address"
+              />
+              <label class="label">
+                <span class="label-text">City</span>
+              </label>
+              <input
+                type="text"
+                placeholder="Type here"
+                class="input input-bordered w-full max-w-xs"
+                v-model.trim="order.city"
+              />
+              <label class="label">
+                <span class="label-text">State</span>
+              </label>
+              <select v-model="order.state" class="select select-bordered">
+                <option
+                  v-for="(state, key) in states"
+                  v-bind:value="state"
+                  :key="key"
+                >
+                  {{ state }}
+                </option>
+              </select>
+              <label class="label">
+                <span class="label-text">ZIP code</span>
+              </label>
+              <input
+                type="number"
+                placeholder="Type here"
+                class="input input-bordered w-full max-w-xs"
+                v-model.trim="order.zip"
+              />
+              <label class="cursor-pointer label mt-4">
+                <span class="label-text">Ship As Gift?</span>
                 <input
                   type="checkbox"
                   id="gift"
@@ -67,45 +78,57 @@
                   v-bind:true-value="order.sendGift"
                   v-bind:false-value="order.dontSendGift"
                   v-model="order.gift"
+                  class="checkbox checkbox-primary"
                 />
-                <label for="gift">Ship As Gift?</label>
+              </label>
+              <div class="form-control mt-3">
+                <label class="cursor-pointer label">
+                  <span class="label-text">Home</span>
+                  <input
+                    type="radio"
+                    name="radio-6"
+                    v-bind:value="order.home"
+                    v-model="order.method"
+                    class="radio checked:bg-red-500"
+                  />
+                </label>
+              </div>
+              <div class="form-control">
+                <label class="cursor-pointer label">
+                  <span class="label-text">Business</span>
+                  <input
+                    type="radio"
+                    name="radio-6"
+                    class="radio checked:bg-blue-500"
+                    v-bind:value="order.business"
+                    v-model="order.method"
+                  />
+                </label>
               </div>
             </div>
-            <!-- end of form-group -->
-            <div class="form-group">
-              <div class="col-md-6 boxes">
-                <input
-                  type="radio"
-                  id="home"
-                  v-bind:value="order.home"
-                  v-model="order.method"
-                />
-                <label for="home">Home</label>
-                <input
-                  type="radio"
-                  id="business"
-                  v-bind:value="order.business"
-                  v-model="order.method"
-                />
-                <label for="business">Business</label>
-              </div>
+          </div>
+
+          <!-- end of form-group -->
+
+          <!-- end of form-group-->
+
+          <div class="form-group mt-4">
+            <div class="">
+              <button
+                type="submit"
+                class="btn btn-primary submit"
+                v-on:click="submitForm"
+              >
+                Place Order
+              </button>
             </div>
-            <!-- end of form-group-->
-            <div class="form-group">
-              <div class="col-md-6">
-                <button
-                  type="submit"
-                  class="btn btn-primary submit"
-                  v-on:click="submitForm"
-                >
-                  Place Order
-                </button>
-              </div>
-              <!-- end of col-md-6-->
-            </div>
-            <!-- end of form-group-->
-            <div class="col-md-12 verify">
-              <pre>
+            <!-- end of col-md-6-->
+          </div>
+        </div>
+        <!-- end of form-group-->
+        <div class="basis-1/4 mt-20">
+          <div class="verify">
+            <pre>
                         First Name: {{ order.firstName }}
                         Last Name: {{ order.lastName }}
                         Address: {{ order.address }}
@@ -114,17 +137,16 @@
                         State: {{ order.state }}
                         Method: {{ order.method }}
                         Gift: {{ order.gift }}
-              </pre>
-            </div>
-            <!-- end of col-md-12 verify-->
+              </pre
+            >
           </div>
-          <!--end of panel-body-->
         </div>
-        <!--end of panel panel-info-->
+        <!-- end of col-md-12 verify-->
       </div>
-      <!--end of col-md-10 col-md-offset-1-->
+      <!--end of panel-body-->
+
+      <!--end of row-->
     </div>
-    <!--end of row-->
   </div>
 </template>
 <script>
