@@ -24,9 +24,11 @@
                   d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
                 />
               </svg>
-              <span v-if="cartItemCount" class="badge badge-sm indicator-item">{{
-                cartItemCount
-              }}</span>
+              <span
+                v-if="cartItemCount"
+                class="badge badge-sm indicator-item"
+                >{{ cartItemCount }}</span
+              >
             </div>
           </label>
           <div
@@ -67,12 +69,15 @@
             class="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52"
           >
             <li>
-              <a class="justify-between">
-                Profile
-                <span class="badge">New</span>
-              </a>
+              <router-link
+                tag="a"
+                :to="{ name: 'ProductAdd' }"
+                class="justify-between"
+              >
+                Add Product
+              </router-link>
             </li>
-            <li><a>Settings</a></li>
+            <li><a>Products Table</a></li>
             <li><a v-on:click="signOut">Sign out</a></li>
           </ul>
         </div>
@@ -138,7 +143,6 @@ export default {
 <style scoped>
 a {
   text-decoration: none;
-
 }
 
 .photo {
@@ -147,6 +151,5 @@ a {
 }
 
 .router-link-exact-active {
-
 }
 </style>
