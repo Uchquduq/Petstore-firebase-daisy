@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import Form from '@/components/Form'
 import Main from '@/components/Main'
 import Product from '@/components/Product'
+import ProductAdd from '@/components/ProductAdd'
 import EditProduct from '@/components/EditProduct'
 Vue.use(Router)
 
@@ -28,6 +29,12 @@ export default new Router({
           props: true
         }
       ]
+    },
+    {
+      path: '/productadd',
+      name: 'ProductAdd',
+      component: ProductAdd,
+      props: true
     },
     {
       path: '/form',
