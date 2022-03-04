@@ -12,7 +12,7 @@
         <div class="form-group">
           <div class="form-control w-full max-w-xs">
             <label class="label mt-4">
-              <span class="label-text">Product id</span>
+              <span class="label-text">Product id > {{idThan - 1 }}</span>
             </label>
             <input
               type="number"
@@ -107,12 +107,15 @@ export default {
       return this.products
         .filter(product => product.id === parseInt(this.$route.params.id))
         .shift();
+    },
+    idThan() {
+      return this.products.length
     }
   },
   methods: {
     async add(p) {
       try {
-        await db.ref("products").push(p);
+        await db.ref("products/" + p.id).set(p);
         this.added = false;
         this.p = {
         id: 0,

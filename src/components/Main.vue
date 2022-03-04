@@ -2,7 +2,7 @@
   <div>
     <my-header :cartItemCount="cartItemCount"></my-header>
     <main>
-      <div class="container mx-auto px-4">
+      <div class="mx-2">
         <div class="flex flex-row flex-wrap justify-center">
           <div
             v-for="product in sortedProducts"
@@ -166,7 +166,10 @@ export default {
     }
   },
   created: function() {
-    this.$store.dispatch("initStore");
+    // this.$store.dispatch("initStore");
+  },
+  beforeUpdate: function() {
+    console.log(this.products);
   }
 };
 </script>
